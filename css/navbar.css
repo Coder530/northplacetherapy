@@ -33,8 +33,10 @@
 
 /* Navbar */
 .navbar {
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
+  width: 100%;
   background-color: var(--background-secondary);
   display: flex;
   justify-content: space-between;
@@ -43,6 +45,7 @@
   z-index: 1000;
   box-shadow: 0 2px 8px rgba(0,0,0,0.07);
   border-bottom: 1px solid #e0e0e0;
+  box-sizing: border-box;
 }
 
 .navbar-logo {
@@ -235,13 +238,13 @@
     left: 0;
     background-color: var(--background-secondary); 
     box-shadow: 0 4px 8px rgba(0,0,0,0.1); 
-    z-index: 999;
+    z-index: 1001; /* Increased z-index */
     padding: 0; /* Remove padding when closed */
     border-top: 1px solid #e0e0e0;
   }
 
   .navbar-links.active {
-    max-height: 80vh; /* A large enough value to show all content */
+    max-height: 95vh; /* A large enough value to show all content */
     overflow-y: auto; /* Allow scrolling for long menus on small screens */
     padding: 0.5rem 0; /* Restore padding when open */
   }
@@ -321,7 +324,6 @@
     padding: 0;
     margin: 0;
     border-radius: 0;
-    max-height: 250px;
     overflow-y: auto;
     /* Reset desktop transforms for mobile */
     transform: none;

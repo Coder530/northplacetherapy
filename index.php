@@ -18,7 +18,7 @@
     include("navbar.php");
     ?>
 
-  <header class="hero" id="hero">
+    <header class="hero" id="hero">
       <video autoplay muted loop playsinline class="hero-video">
         <source src="images/northplacebg.mp4" type="video/mp4" />
         Your browser does not support the video tag.
@@ -26,51 +26,66 @@
       <div class="overlay"></div>
       <div class="hero-content">
         <h1>NorthPlace Therapy</h1>
-        <p><em>PSYCHOTHERAPY – COACHING – COUNSELLING</em></p>
-        <p><em>Marlow & Bisham</em>, and <em>Online</em></p>
-        <button class="btn" id="contact-me-btn-hero">CONTACT ME</button>
+        <p>Confidential, flexible, tailored to you.</p>
+        <a href="contact.php" class="btn" style="size: 15px;">CONTACT ME</a>
       </div>
-      
+    </header>
+
+
+    <section id="nextSection" class="flip-wrapper">
+      <div class="flip-inner" id="flipInner">
+
+        <!-- Front (original content) -->
+        <div class="flip-face front">
+          <!-- Keep your original front section content here -->
+          <h1>NorthPlace Therapy</h1>
+          <h3>PSYCHOTHERAPY – COACHING – COUNSELLING</h3>
+          <p><em>Marlow & Bisham</em>, and <em>Online</em></p>
+          <p>Helping you gain clarity, confidence, and control.</p>
+          <button class="btn" id="contact-me-btn-hero">CONTACT ME</button>
+        </div>
+
         <style>
-            /* Making Buttons Shimmery */
-            #contact-me-btn-hero {
-                background: linear-gradient(135deg, var(--compass-blue), var(--slate-blue));
-                color: var(--white);
-                border: none;
-                padding: 1rem 2rem;
-                font-size: 1rem;
-                font-family: var(--font-family-body);
-                font-weight: 700;
-                border-radius: 8px;
-                cursor: pointer;
-                transition: all 0.3s ease;
-                letter-spacing: 0.02em;
-                margin-top: 0.5rem;
-                position: relative;
-                overflow: hidden;
-            }
-            
-            #contact-me-btn-hero::before {
-                content: '';
-                position: absolute;
-                top: 0;
-                left: -100%;
-                width: 100%;
-                height: 100%;
-                background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-                transition: left 0.5s ease;
-            }
-            
-            #contact-me-btn-hero:hover::before {
-                left: 100%;
-            }
-            
-            #contact-me-btn-hero:hover {
-                transform: translateY(-2px);
-                box-shadow: 0 6px 20px rgba(var(--rgb-accent-primary), 0.3);
-            }
+          /* Making Buttons Shimmery */
+          #contact-me-btn-hero {
+            background: linear-gradient(135deg, var(--compass-blue), var(--slate-blue));
+            color: var(--white);
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            font-family: var(--font-family-body);
+            font-weight: 700;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            letter-spacing: 0.02em;
+            margin-top: 0.5rem;
+            position: relative;
+            overflow: hidden;
+          }
+
+          #contact-me-btn-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+          }
+
+          #contact-me-btn-hero:hover::before {
+            left: 100%;
+          }
+
+          #contact-me-btn-hero:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(var(--rgb-accent-primary), 0.3);
+          }
         </style>
-    </header><br><br><br>
+      </div>
+    </section>
 
 
     <div class="services-highlight" style="text-align:center; padding:2rem 1rem;"><h2>PSYCHOTHERAPY-COACHING-COUNSELLING</h2></div>
@@ -219,65 +234,52 @@
     <br><br>
 
     <!-- Therapy Information Section -->
-    <section class="therapy-info fade-in-section" style="padding: 4rem 2rem; background: #f8f9fa;">
-      <div class="container" style="max-width: 1200px; margin: 0 auto;">
-        <h2 style="text-align: center; margin-bottom: 3rem; font-size: 2rem; color: #333; font-weight: 300; letter-spacing: 1px;">THERAPY INFORMATION</h2>
-
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 3rem; margin-top: 2rem;">
-
+    <section class="therapy-info fade-in-section">
+      <div class="container">
+        <h2 class="section-title">THERAPY INFORMATION</h2>
+        <div class="info-grid">
           <!-- Psychotherapy and Counselling Column -->
           <div class="info-column">
-            <h3 style="font-size: 1.5rem; margin-bottom: 1.5rem; color: #333; font-weight: 400;">Psychotherapy and Counselling</h3>
-            <p style="color: #666; line-height: 1.6;">
+            <h3 class="info-title">Psychotherapy and Counselling</h3>
+            <p class="info-text">
               The terms <em>counselling</em> and <em>psychotherapy</em> are often used interchangeably, but there are some distinctions. Counselling typically refers to a process where clients explore a specific problem or situation. Psychotherapy tends to focus more deeply on the client’s inner world, emotions, and long-term patterns.
             </p>
           </div>
-
           <!-- What is Coaching Column -->
           <div class="info-column">
-            <h3 style="font-size: 1.5rem; color: #333; font-weight: 400;">What is Coaching?</h3>
-            <p style="color: #666; line-height: 1.6;">
+            <h3 class="info-title">What is Coaching?</h3>
+            <p class="info-text">
               If counselling and psychotherapy are seen as ‘reparative’—helping to heal and understand past or present difficulties—then coaching is more ‘generative.’ It’s about developing yourself to your fullest potential: setting goals, creating strategies, and taking action to achieve them. Often, coaching works best when combined with the foundational insights gained through counselling/psychotherapy.
             </p>
           </div>
-
           <!-- Integrative Approach Column -->
           <div class="info-column">
-            <h3 style="font-size: 1.5rem; margin-bottom: 1.5rem; color: #333; font-weight: 400;">Integrative Approach</h3>
-            <p style="color: #666; line-height: 1.6;">
+            <h3 class="info-title">Integrative Approach</h3>
+            <p class="info-text">
               An integrative approach draws from multiple therapy modalities. It reflects the belief that no single psychological theory has all the answers. Instead, it embraces different ways to explore and understand problems, using techniques from various therapies to help clients.
             </p>
           </div>
-
         </div>
       </div>
     </section>
 
     <!-- Fees Section -->
-    <section class="fees fade-in-section" style="padding: 4rem 2rem; background: #fff;">
-      <div class="container" style="max-width: 1200px; margin: 0 auto;">
-        <h2 style="text-align: center; margin-bottom: 3rem; font-size: 2rem; color: #333; font-weight: 300; letter-spacing: 1px;">FEES (2025)</h2>
-
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin-top: 2rem; min-height: 400px;">
-
+    <section class="fees fade-in-section">
+      <div class="container">
+        <h2 class="section-title">FEES (2025)</h2>
+        <div class="fees-grid">
           <!-- Left Side - Psychotherapy, Coaching, Counselling -->
-          <div style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgdmlld0JveD0iMCAwIDEwMCAxMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxwYXRoIGQ9Ik0wIDBoMTAwdjEwMEgweiIgZmlsbD0iIzg4NzY2MyIvPgo8L3N2Zz4K'); background-size: cover; background-position: center; color: white; padding: 3rem; display: flex; flex-direction: column; justify-content: center; position: relative;">
-
-            <!-- Wood texture overlay -->
-            <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: repeating-linear-gradient(90deg, rgba(139,115,85,0.1) 0px, rgba(139,115,85,0.1) 2px, rgba(160,136,106,0.1) 2px, rgba(160,136,106,0.1) 4px); opacity: 0.3;"></div>
-
-            <!-- Purple orchid decoration -->
-            <div style="position: absolute; top: 2rem; right: 2rem; width: 80px; height: 80px; background: radial-gradient(circle, #c44ba0 20%, #a0386b  40%, #8b2f5a  60%); border-radius: 50% 40% 50% 40%; transform: rotate(45deg); opacity: 0.8;"></div>
-            <div style="position: absolute; top: 1.5rem; right: 1.5rem; width: 60px; height: 60px; background: radial-gradient(circle, #d668b8 30%, #b84590 50%); border-radius: 50% 35% 50% 35%; transform: rotate(-20deg); opacity: 0.9;"></div>
-
-            <div style="position: relative; z-index: 2;">
-              <h3 style="font-size: 2rem; margin-bottom: 2rem; color: white; font-weight: 300;">Psychotherapy, Coaching, Counselling</h3>
-
-              <div style="margin-bottom: 2rem;">
-                <h4 style="font-size: 1.2rem; margin-bottom: 1rem; color: #f0f0f0;">Personal Consultancy (50 minutes per session)</h4>
-                <ul style="list-style: none; padding: 0; margin: 0;">
-                  <li style="margin-bottom: 0.5rem; color: #f0f0f0;">• Individuals: £85</li>
-                  <li style="margin-bottom: 0.5rem; color: #f0f0f0;">• Couples: £115</li>
+          <div class="fees-box fees-box-left">
+            <div class="fees-overlay-wood"></div>
+            <div class="fees-deco-orchid-1"></div>
+            <div class="fees-deco-orchid-2"></div>
+            <div class="fees-content">
+              <h3>Psychotherapy, Coaching, Counselling</h3>
+              <div>
+                <h4>Personal Consultancy (50 minutes per session)</h4>
+                <ul>
+                  <li>• Individuals: £85</li>
+                  <li>• Couples: £115</li>
                 </ul>
                 <b>
                     <p>
@@ -288,17 +290,13 @@
               </div>
             </div>
           </div>
-
           <!-- Right Side - Clinical Supervision -->
-          <div style="background: linear-gradient(135deg, rgba(230,220,190,0.9), rgba(240,230,200,0.9)), url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgdmlld0JveD0iMCAwIDEwMCAxMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxjaXJjbGUgY3g9IjIwIiBjeT0iMjAiIHI9IjMiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4zKSIvPgo8Y2lyY2xlIGN4PSI4MCIgY3k9IjMwIiByPSI1IiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMikiLz4KPGZ1bmN0aW9uIGN4PSI0MCIgY3k9IjcwIiByPSI0IiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMSkiLz4KPC9zdmc+'); background-size: cover; background-position: center; color: #444; padding: 3rem; display: flex; flex-direction: column; justify-content: center; position: relative;">
-
-            <!-- Decorative circles -->
-            <div style="position: absolute; top: 2rem; right: 3rem; width: 20px; height: 20px; background: rgba(255,255,255,0.4); border-radius: 50%;"></div>
-            <div style="position: absolute; top: 4rem; right: 2rem; width: 15px; height: 15px; background: rgba(255,255,255,0.3); border-radius: 50%;"></div>
-            <div style="position: absolute; top: 6rem; right: 4rem; width: 12px; height: 12px; background: rgba(255,255,255,0.2); border-radius: 50%;"></div>
-
-            <div style="position: relative; z-index: 2;">
-              <div style="margin-bottom: 2rem">
+          <div class="fees-box fees-box-right">
+            <div class="fees-deco-circle-1"></div>
+            <div class="fees-deco-circle-2"></div>
+            <div class="fees-deco-circle-3"></div>
+            <div class="fees-content">
+              <div>
                   <p>
                       Based in Marlow & Bisham, I offer a balance of integrative counselling and coaching in a warm, confidential environment — all at a competitive rate that respects your investment in wellbeing.
                   </p>
@@ -308,10 +306,8 @@
                       </p>
                   </b>
               </div>
-
             </div>
           </div>
-
         </div>
       </div>
     </section>
