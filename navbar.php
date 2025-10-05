@@ -17,7 +17,6 @@ if (session_status() == PHP_SESSION_NONE) {
   </a>
   <ul class="navbar-links" id="navbarLinks">
     <li><strong><a href="index.php">Home</a></strong></li>
-    <li><a href="about.php">About</a></li>
     <li><a href="contact.php">Contact</a></li>
     <li><a href="faq.php">FAQ</a></li>
     <li><a href="resources.php">Resources</a></li>
