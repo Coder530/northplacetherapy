@@ -55,4 +55,4 @@ if (session_status() == PHP_SESSION_NONE) {
   </ul>
 </nav>
 
-<script src="js/navbar.js"></script>
+<script src="js/script.js"></script>

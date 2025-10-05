@@ -333,24 +333,6 @@
       </div>
     </section>
 
-    <!-- Responsive Styles -->
-    <style>
-    @media (max-width: 768px) {
-      .therapy-info .container > div {
-        grid-template-columns: 1fr !important;
-        gap: 2rem !important;
-      }
-
-      .fees .container > div {
-        grid-template-columns: 1fr !important;
-      }
-
-      .fees .container > div > div {
-        min-height: 300px !important;
-      }
-    }
-    </style>
-
     <section class="services fade-in-section">
         <h2>NorthPlace Services</h2>
         <!-- Swiper -->

@@ -1,333 +1,351 @@
-document.addEventListener('DOMContentLoaded', () => {
-  // Navbar toggle
-  const navbarLinks = document.getElementById('navbarLinks');
-  // The toggleNavbar function will be called by the onclick attribute in navbar.php
-  // Ensure it's globally accessible or refactor to use event listeners here.
+// Consolidated script for the entire website
 
-  // Dropdown toggle for mobile
-  const dropdowns = document.querySelectorAll('.navbar .dropdown');
-
-  dropdowns.forEach(dropdown => {
-    const link = dropdown.querySelector('a'); // The main dropdown link
-    link.addEventListener('click', function(event) {
-      // Prevent link navigation for the main dropdown link on mobile if it has a submenu
-      if (window.innerWidth <= 768 && dropdown.querySelector('.dropdown-content')) {
-        event.preventDefault();
-        // Toggle 'open' class on the parent .dropdown element
-        dropdown.classList.toggle('open');
-        
-        // Optional: Close other open dropdowns
-        dropdowns.forEach(otherDropdown => {
-          if (otherDropdown !== dropdown) {
-            otherDropdown.classList.remove('open');
-          }
+// Needs to be a global function because it's called by onclick attribute in navbar.php
+window.toggleNavbar = function() {
+    const navbarLinks = document.getElementById("navbarLinks");
+    if (navbarLinks.classList.contains("active")) {
+        navbarLinks.classList.remove("active");
+        // Close all dropdowns when navbar is closed
+        document.querySelectorAll('.dropdown.open').forEach(dropdown => {
+            dropdown.classList.remove('open');
+            const dropdownLink = dropdown.querySelector('a[aria-haspopup="true"]');
+            if (dropdownLink) {
+                dropdownLink.setAttribute('aria-expanded', 'false');
+            }
         });
-      }
-    });
-  });
-
-  // Carousel functionality (existing code)
-  const carousel = document.getElementById('carousel'); // Make sure an element with ID 'carousel' exists
-  if (carousel) {
-    let scrollAmount = 0;
-    const scrollStep = 1;
-
-    function autoScroll() {
-      if (carousel) { // Check if carousel still exists
-        scrollAmount += scrollStep;
-        if (scrollAmount >= carousel.scrollWidth - carousel.clientWidth) {
-          scrollAmount = 0;
-        }
-        carousel.scrollLeft = scrollAmount;
-      }
+    } else {
+        navbarLinks.classList.add("active");
     }
-    // Only set interval if carousel exists
-    setInterval(autoScroll, 50); // Adjusted interval for smoother/slower scroll
-  }
+};
 
-  // Success message handling for form (will be used later)
-  const form = document.getElementById('contact-form');
-  const successMessage = document.getElementById('success-message'); // For later use with PHP response
+// Needs to be a global function because it's called by onclick attribute in navbar.php
+window.toggleDropdown = function(event) {
+    event.preventDefault(); // Prevent the default link behavior
+    event.stopPropagation(); // Stop event from bubbling up
 
-  if (form) {
-    form.addEventListener('submit', function(event) {
-      let isValid = true;
+    const dropdown = event.target.closest('.dropdown');
+    if (!dropdown) return;
 
-      // Clear previous error messages
-      document.getElementById('dob-error').style.display = 'none';
-      document.getElementById('appointment-date-error').style.display = 'none';
-      // You can add more specific error message elements for other fields if desired
+    const isCurrentlyOpen = dropdown.classList.contains('open');
+    const dropdownLink = dropdown.querySelector('a[aria-haspopup="true"]');
 
-      // --- Field retrieval ---
-      const firstName = form.first_name.value.trim();
-      const lastName = form.last_name.value.trim();
-      const email = form.email.value.trim();
-      const phone = form.phone.value.trim();
-      const dobString = form.dob.value;
-      const appointmentDateString = form.appointment_date.value;
-
-      // --- Basic required field check (HTML 'required' attribute already handles this, but good for JS fallback) ---
-      if (!firstName || !lastName || !email || !phone || !dobString || !appointmentDateString) {
-        // This alert is a fallback; 'required' attribute is primary for this.
-        // alert('Please fill in all required fields.');
-        // isValid = false; 
-      }
-
-      // --- Email validation (basic) ---
-      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (email && !emailPattern.test(email)) {
-        alert('Please enter a valid email address.');
-        isValid = false;
-      }
-
-      // --- Phone validation (very basic: checks for at least 7 digits, allows + and spaces) ---
-      const phonePattern = /^[+\d\s]{7,}$/; // Allows plus, digits, spaces, min 7 chars
-      if (phone && !phonePattern.test(phone.replace(/\s/g, ''))) { // Remove spaces for digit count check
-          alert('Please enter a valid phone number (at least 7 digits).');
-          isValid = false;
-      }
-      
-      // --- Date of Birth (DOB) validation: Must be 18+ ---
-      if (dobString) {
-        const dob = new Date(dobString);
-        const today = new Date();
-        let age = today.getFullYear() - dob.getFullYear();
-        const m = today.getMonth() - dob.getMonth();
-        if (m < 0 || (m === 0 && today.getDate() < dob.getDate())) {
-          age--;
+    // Close any currently open dropdowns, unless it's the one being clicked
+    document.querySelectorAll('.dropdown.open').forEach(openDropdown => {
+        if (openDropdown !== dropdown) {
+            openDropdown.classList.remove('open');
+            const otherLink = openDropdown.querySelector('a[aria-haspopup="true"]');
+            if (otherLink) {
+                otherLink.setAttribute('aria-expanded', 'false');
+            }
         }
-        if (age < 18) {
-          document.getElementById('dob-error').style.display = 'block';
-          isValid = false;
-        }
-      }
-
-      // --- Appointment Date validation: Cannot be in the past ---
-      if (appointmentDateString) {
-        const appointmentDate = new Date(appointmentDateString);
-        const today = new Date();
-        // Set hours to 0 to compare dates only, not time
-        today.setHours(0, 0, 0, 0); 
-        appointmentDate.setHours(0,0,0,0); // Also normalize appointment date if it includes time
-
-        if (appointmentDate < today) {
-          document.getElementById('appointment-date-error').style.display = 'block';
-          isValid = false;
-        }
-      }
-
-      if (!isValid) {
-        event.preventDefault(); // Prevent form submission if validation fails
-      } else {
-        // If using AJAX, you would handle submission here.
-        // For direct PHP submission, this 'else' block might not be strictly necessary
-        // unless you want to show a loading spinner or similar.
-        // The successMessage display will be handled by PHP redirecting or AJAX response.
-      }
     });
-  }
-});
 
-// Needs to be a global function because it's called by onclick attribute
-function toggleNavbar() {
-  const navbarLinks = document.getElementById('navbarLinks');
-  if (navbarLinks) {
-    navbarLinks.classList.toggle('active');
-  }
-}
+    // Toggle the 'open' class on the clicked dropdown
+    if (isCurrentlyOpen) {
+        dropdown.classList.remove('open');
+        if (dropdownLink) {
+            dropdownLink.setAttribute('aria-expanded', 'false');
+        }
+    } else {
+        dropdown.classList.add('open');
+        if (dropdownLink) {
+            dropdownLink.setAttribute('aria-expanded', 'true');
+        }
+    }
+};
 
-// Initialize Swiper for Services Carousel
 document.addEventListener('DOMContentLoaded', () => {
-  // Only initialize Swiper if the container exists
-  const serviceSwiperContainer = document.querySelector('.service-swiper');
-  if (serviceSwiperContainer) {
-    const serviceSwiper = new Swiper('.service-swiper', {
-      // Optional parameters
-      loop: true,
-      slidesPerView: 1, // Default for mobile
-      spaceBetween: 30, // Space between slides
-      grabCursor: true,
-      
-      autoplay: {
-        delay: 4000, // Delay between transitions (in ms)
-        disableOnInteraction: false, // Autoplay will not be disabled after user interactions (swipes)
-      },
+    // --- Navbar Enhancement ---
 
-      pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-      },
+    // Enhanced click outside handling for mobile
+    document.addEventListener('click', function(event) {
+        const navbarLinks = document.getElementById('navbarLinks');
+        const hamburgerIcon = document.querySelector('.navbar .icon');
 
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      },
-
-      // Responsive breakpoints
-      breakpoints: {
-        // when window width is >= 640px
-        640: {
-          slidesPerView: 2,
-          spaceBetween: 20
-        },
-        // when window width is >= 768px (tablet)
-        768: {
-          slidesPerView: 2,
-          spaceBetween: 30
-        },
-        // when window width is >= 1024px (desktop)
-        1024: {
-          slidesPerView: 3,
-          spaceBetween: 30
-        },
-        // when window width is >= 1200px
-        1200: {
-            slidesPerView: 3, // Or 4 if cards are narrower
-            spaceBetween: 40
+        // Close dropdowns when clicking outside
+        if (navbarLinks && !event.target.closest('.dropdown')) {
+            document.querySelectorAll('.dropdown.open').forEach(dropdown => {
+                dropdown.classList.remove('open');
+                const dropdownLink = dropdown.querySelector('a[aria-haspopup="true"]');
+                if (dropdownLink) {
+                    dropdownLink.setAttribute('aria-expanded', 'false');
+                }
+            });
         }
-      }
+
+        // Close mobile menu when clicking outside
+        if (navbarLinks && navbarLinks.classList.contains('active')) {
+            if (!navbarLinks.contains(event.target) &&
+                hamburgerIcon && !hamburgerIcon.contains(event.target)) {
+                navbarLinks.classList.remove('active');
+                // Also close all dropdowns
+                document.querySelectorAll('.dropdown.open').forEach(dropdown => {
+                    dropdown.classList.remove('open');
+                    const dropdownLink = dropdown.querySelector('a[aria-haspopup="true"]');
+                    if (dropdownLink) {
+                        dropdownLink.setAttribute('aria-expanded', 'false');
+                    }
+                });
+            }
+        }
     });
-  }
-  // ... other DOMContentLoaded code from previous steps ...
 
-  // Fade-in sections on scroll
-  // Preloader functionality
-  const preloader = document.getElementById('preloader');
-  if (preloader) {
-    window.addEventListener('load', () => {
-      // Add 'hidden' class that triggers CSS fade-out transition
-      preloader.classList.add('hidden');
-      // Optional: completely remove from DOM after transition
-      // setTimeout(() => {
-      //   preloader.style.display = 'none';
-      // }, 500); // Match CSS transition duration
-    });
-  }
-
-  // Testimonial Carousel
-  const testimonialsContainer = document.querySelector('.testimonials'); // Assuming this is the section container
-  if (testimonialsContainer) {
-    const testimonials = testimonialsContainer.querySelectorAll('.testimonial');
-    let currentTestimonialIndex = 0;
-    const testimonialTime = 20000; // 20 seconds
-
-    if (testimonials.length > 0) {
-      // Initially show the first testimonial
-      testimonials[currentTestimonialIndex].classList.add('active');
-      // testimonials[currentTestimonialIndex].style.display = 'block'; // Already handled by .active
-      // requestAnimationFrame(() => { // Ensure display:block is applied before opacity transition
-      //   testimonials[currentTestimonialIndex].style.opacity = 1;
-      // });
-
-
-      const rotateTestimonials = () => {
-        // Fade out current testimonial
-        testimonials[currentTestimonialIndex].classList.remove('active');
-        // testimonials[currentTestimonialIndex].style.opacity = 0;
-
-        // After fade out transition, change to next testimonial
-        // setTimeout(() => { // This timeout should match CSS transition duration
-          // testimonials[currentTestimonialIndex].style.display = 'none';
-
-          currentTestimonialIndex = (currentTestimonialIndex + 1) % testimonials.length;
-
-          // Fade in next testimonial
-          testimonials[currentTestimonialIndex].classList.add('active');
-          // testimonials[currentTestimonialIndex].style.display = 'block';
-          // requestAnimationFrame(() => {
-          //   testimonials[currentTestimonialIndex].style.opacity = 1;
-          // });
-        // }, 750); // Must match opacity transition time (0.75s)
-      };
-
-      if (testimonials.length > 1) { // Only rotate if there's more than one
-        setInterval(rotateTestimonials, testimonialTime);
-      }
+    // Close dropdowns when the navbar itself is toggled closed
+    const navbarLinks = document.getElementById('navbarLinks');
+    if (navbarLinks) {
+        const observer = new MutationObserver(function(mutationsList) {
+            for (let mutation of mutationsList) {
+                if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+                    if (!navbarLinks.classList.contains('active')) {
+                        // If navbar is no longer active (i.e., closed on mobile), close all dropdowns
+                        document.querySelectorAll('.dropdown.open').forEach(dropdown => {
+                            dropdown.classList.remove('open');
+                            const dropdownLink = dropdown.querySelector('a[aria-haspopup="true"]');
+                            if (dropdownLink) {
+                                dropdownLink.setAttribute('aria-expanded', 'false');
+                            }
+                        });
+                    }
+                }
+            }
+        });
+        observer.observe(navbarLinks, { attributes: true });
     }
-  }
 
-  const sectionsToFade = document.querySelectorAll('.fade-in-section');
-  if (sectionsToFade.length > 0) {
-    const observerOptions = {
-      root: null, // relative to document viewport
-      rootMargin: '0px',
-      threshold: 0.1 //
-    };
-
-    const observerCallback = (entries, observer) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible');
-          observer.unobserve(entry.target); // Stop observing once visible
+    // Handle window resize to close mobile menu if switching to desktop
+    window.addEventListener('resize', function() {
+        if (window.innerWidth > 768) {
+            const navbarLinks = document.getElementById('navbarLinks');
+            if (navbarLinks) {
+                navbarLinks.classList.remove('active');
+            }
+            // Close all dropdowns when switching to desktop
+            document.querySelectorAll('.dropdown.open').forEach(dropdown => {
+                dropdown.classList.remove('open');
+                const dropdownLink = dropdown.querySelector('a[aria-haspopup="true"]');
+                if (dropdownLink) {
+                    dropdownLink.setAttribute('aria-expanded', 'false');
+                }
+            });
         }
-      });
-    };
-
-    const intersectionObserver = new IntersectionObserver(observerCallback, observerOptions);
-    sectionsToFade.forEach(section => {
-      intersectionObserver.observe(section);
     });
-  }
+
+    // --- Other Functionalities ---
+
+    // Carousel functionality
+    const carousel = document.getElementById('carousel');
+    if (carousel) {
+        let scrollAmount = 0;
+        const scrollStep = 1;
+        function autoScroll() {
+            if (carousel) {
+                scrollAmount += scrollStep;
+                if (scrollAmount >= carousel.scrollWidth - carousel.clientWidth) {
+                    scrollAmount = 0;
+                }
+                carousel.scrollLeft = scrollAmount;
+            }
+        }
+        setInterval(autoScroll, 50);
+    }
+
+    // Form validation
+    const form = document.getElementById('contact-form');
+    if (form) {
+        form.addEventListener('submit', function(event) {
+            let isValid = true;
+
+            // Clear previous error messages
+            document.getElementById('dob-error').style.display = 'none';
+            document.getElementById('appointment-date-error').style.display = 'none';
+
+            const firstName = form.first_name.value.trim();
+            const lastName = form.last_name.value.trim();
+            const email = form.email.value.trim();
+            const phone = form.phone.value.trim();
+            const dobString = form.dob.value;
+            const appointmentDateString = form.appointment_date.value;
+
+            if (!firstName || !lastName || !email || !phone || !dobString || !appointmentDateString) {
+                // Handled by 'required' attribute
+            }
+
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (email && !emailPattern.test(email)) {
+                alert('Please enter a valid email address.');
+                isValid = false;
+            }
+
+            const phonePattern = /^[+\d\s]{7,}$/;
+            if (phone && !phonePattern.test(phone.replace(/\s/g, ''))) {
+                alert('Please enter a valid phone number (at least 7 digits).');
+                isValid = false;
+            }
+
+            if (dobString) {
+                const dob = new Date(dobString);
+                const today = new Date();
+                let age = today.getFullYear() - dob.getFullYear();
+                const m = today.getMonth() - dob.getMonth();
+                if (m < 0 || (m === 0 && today.getDate() < dob.getDate())) {
+                    age--;
+                }
+                if (age < 18) {
+                    document.getElementById('dob-error').style.display = 'block';
+                    isValid = false;
+                }
+            }
+
+            if (appointmentDateString) {
+                const appointmentDate = new Date(appointmentDateString);
+                const today = new Date();
+                today.setHours(0, 0, 0, 0);
+                appointmentDate.setHours(0,0,0,0);
+
+                if (appointmentDate < today) {
+                    document.getElementById('appointment-date-error').style.display = 'block';
+                    isValid = false;
+                }
+            }
+
+            if (!isValid) {
+                event.preventDefault();
+            }
+        });
+    }
+
+    // Initialize Swiper for Services Carousel
+    const serviceSwiperContainer = document.querySelector('.service-swiper');
+    if (serviceSwiperContainer) {
+        new Swiper('.service-swiper', {
+            loop: true,
+            slidesPerView: 1,
+            spaceBetween: 30,
+            grabCursor: true,
+            autoplay: {
+                delay: 4000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            breakpoints: {
+                640: { slidesPerView: 2, spaceBetween: 20 },
+                768: { slidesPerView: 2, spaceBetween: 30 },
+                1024: { slidesPerView: 3, spaceBetween: 30 },
+                1200: { slidesPerView: 3, spaceBetween: 40 }
+            }
+        });
+    }
+
+    // Initialize Swiper for Blog Carousel
+    const blogSwiperContainer = document.querySelector('.blog-swiper');
+    if (blogSwiperContainer){
+        new Swiper('.blog-swiper', {
+            slidesPerView: 1,
+            spaceBetween: 20,
+            loop: true,
+            autoplay: {
+                delay: 4000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.blog-swiper .swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.blog-swiper .swiper-button-next',
+                prevEl: '.blog-swiper .swiper-button-prev',
+            },
+            breakpoints: {
+                640: { slidesPerView: 1 },
+                768: { slidesPerView: 2 },
+                1024: { slidesPerView: 3 }
+            }
+        });
+    }
+
+    // Preloader
+    const preloader = document.getElementById('preloader');
+    if (preloader) {
+        window.addEventListener('load', () => {
+            preloader.classList.add('hidden');
+        });
+    }
+
+    // Testimonial Carousel
+    const testimonialsContainer = document.querySelector('.testimonials');
+    if (testimonialsContainer) {
+        const testimonials = testimonialsContainer.querySelectorAll('.testimonial');
+        let currentTestimonialIndex = 0;
+        if (testimonials.length > 0) {
+            testimonials[currentTestimonialIndex].classList.add('active');
+            const rotateTestimonials = () => {
+                testimonials[currentTestimonialIndex].classList.remove('active');
+                currentTestimonialIndex = (currentTestimonialIndex + 1) % testimonials.length;
+                testimonials[currentTestimonialIndex].classList.add('active');
+            };
+            if (testimonials.length > 1) {
+                setInterval(rotateTestimonials, 20000);
+            }
+        }
+    }
+
+    // Fade-in sections on scroll
+    const sectionsToFade = document.querySelectorAll('.fade-in-section');
+    if (sectionsToFade.length > 0) {
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        sectionsToFade.forEach(section => {
+            observer.observe(section);
+        });
+    }
+
+    // Hero video scroll
+    const hero = document.getElementById('hero');
+    const nextSection = document.getElementById('nextSection');
+    if (hero && nextSection) {
+        setTimeout(() => {
+            hero.classList.add('hidden');
+            nextSection.classList.remove('hidden');
+            nextSection.style.opacity = 0;
+            nextSection.style.transform = 'translateY(30px) scale(0.95)';
+            requestAnimationFrame(() => {
+                nextSection.style.transition = 'opacity 1.2s ease, transform 1.2s ease';
+                nextSection.style.opacity = 1;
+                nextSection.style.transform = 'translateY(0) scale(1)';
+            });
+        }, 23000);
+    }
 });
 
-const blogSwiper = new Swiper('.blog-swiper', {
-  slidesPerView: 1,
-  spaceBetween: 20,
-  loop: true,
-  autoplay: {
-    delay: 4000,
-    disableOnInteraction: false,
-  },
-  pagination: {
-    el: '.blog-swiper .swiper-pagination',
-    clickable: true,
-  },
-  navigation: {
-    nextEl: '.blog-swiper .swiper-button-next',
-    prevEl: '.blog-swiper .swiper-button-prev',
-  },
-  breakpoints: {
-    640: {
-      slidesPerView: 1,
-    },
-    768: {
-      slidesPerView: 2,
-    },
-    1024: {
-      slidesPerView: 3,
-    }
-  }
-});
-
-//scrolls through hero video after 23 seconds
-setTimeout(() => {
-  const hero = document.getElementById('hero');
-  const nextSection = document.getElementById('nextSection');
-
-  hero.classList.add('hidden');
-  
-  // Show nextSection and remove any hidden class if present
-  nextSection.classList.remove('hidden');
-
-  // Optional: initially hide nextSection opacity for smooth entry
-  nextSection.style.opacity = 0;
-  nextSection.style.transform = 'translateY(30px) scale(0.95)';
-
-  // Trigger reflow and then animate to visible state
-  requestAnimationFrame(() => {
-    nextSection.style.transition = 'opacity 1.2s ease, transform 1.2s ease';
-    nextSection.style.opacity = 1;
-    nextSection.style.transform = 'translateY(0) scale(1)';
-  });
-}, 23000);
-
+// Global functions for popups
 function openContactPopup() {
-  document.getElementById('contactFormPopup').style.display = 'block';
-  document.getElementById('nextSection').style.width = '50%';
-  document.getElementById('contactFormPopup').style.width = '50%';
+    const contactFormPopup = document.getElementById('contactFormPopup');
+    const nextSection = document.getElementById('nextSection');
+    if(contactFormPopup && nextSection) {
+        contactFormPopup.style.display = 'block';
+        nextSection.style.width = '50%';
+        contactFormPopup.style.width = '50%';
+    }
 }
 
 function closeContactPopup() {
-  document.getElementById('contactFormPopup').style.display = 'none';
-  document.getElementById('nextSection').style.width = '100%';
+    const contactFormPopup = document.getElementById('contactFormPopup');
+    const nextSection = document.getElementById('nextSection');
+    if(contactFormPopup && nextSection) {
+        contactFormPopup.style.display = 'none';
+        nextSection.style.width = '100%';
+    }
 }
