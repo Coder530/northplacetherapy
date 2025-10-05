@@ -233,7 +233,11 @@
   }
   
   .navbar-links {
-    display: none; 
+    /* Use max-height for a transition effect instead of display: none */
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease-out;
+
     flex-direction: column;
     width: 100%;
     position: absolute; 
@@ -242,12 +246,14 @@
     background-color: var(--background-secondary); 
     box-shadow: 0 4px 8px rgba(0,0,0,0.1); 
     z-index: 999;
-    padding: 0.5rem 0;
+    padding: 0; /* Remove padding when closed */
     border-top: 1px solid #e0e0e0;
   }
 
   .navbar-links.active {
-    display: flex; 
+    max-height: 80vh; /* A large enough value to show all content */
+    overflow-y: auto; /* Allow scrolling for long menus on small screens */
+    padding: 0.5rem 0; /* Restore padding when open */
   }
 
   .navbar-links li {
