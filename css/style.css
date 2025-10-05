@@ -90,9 +90,7 @@ a:hover, a:focus {
 
 /* HERO HEADER */
 header.hero {
-  position: relative;
   height: 100vh;
-  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1161,21 +1159,10 @@ footer {
 }
 
 
-/*making transition from video work */
-.hero, .hero-follow {
-  position: relative;
-  transition:
-    opacity 1.2s ease,
-    transform 1.2s ease;
-  opacity: 1;
-  transform: translateY(0) scale(1);
-  width: 100%;
-}
 
 .hidden {
   opacity: 0;
   pointer-events: none;
-  transform: translateY(-30px) scale(0.95);
   position: absolute;
   top: 0;
   left: 0;
@@ -1257,6 +1244,137 @@ footer {
   padding: 20px;
 }
 
+/* Therapy Info & Fees Sections */
+.therapy-info {
+  padding: 4rem 2rem;
+  background: #f8f9fa;
+}
+
+.fees {
+  padding: 4rem 2rem;
+  background: #fff;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 3rem;
+  font-size: 2rem;
+  color: #333;
+  font-weight: 300;
+  letter-spacing: 1px;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 3rem;
+  margin-top: 2rem;
+}
+
+.info-title {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  color: #333;
+  font-weight: 400;
+}
+
+.info-text {
+  color: #666;
+  line-height: 1.6;
+}
+
+.fees-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  margin-top: 2rem;
+  min-height: 400px;
+}
+
+.fees-box {
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+}
+
+.fees-box-left {
+  background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgdmlld0JveD0iMCAwIDEwMCAxMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxwYXRoIGQ9Ik0wIDBoMTAwdjEwMEgweiIgZmlsbD0iIzg4NzY2MyIvPgo8L3N2Zz4K');
+  background-size: cover;
+  background-position: center;
+  color: white;
+}
+
+.fees-box-right {
+  background: linear-gradient(135deg, rgba(230,220,190,0.9), rgba(240,230,200,0.9)), url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgdmlld0JveD0iMCAwIDEwMCAxMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxjaXJjbGUgY3g9IjIwIiBjeT0iMjAiIHI9IjMiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4zKSIvPgo8Y2lyY2xlIGN4PSI4MCIgY3k9IjMwIiByPSI1IiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMikiLz4KPGZ1bmN0aW9uIGN4PSI0MCIgY3k9IjcwIiByPSI0IiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMSkiLz4KPC9zdmc+');
+  background-size: cover;
+  background-position: center;
+  color: #444;
+}
+
+.fees-content {
+  position: relative;
+  z-index: 2;
+}
+
+.fees-content h3 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: white;
+  font-weight: 300;
+}
+
+.fees-box-right .fees-content h3 {
+  color: #444;
+}
+
+.fees-content h4 {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  color: #f0f0f0;
+}
+
+.fees-box-right .fees-content h4 {
+  color: #666;
+}
+
+.fees-content ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.fees-content li {
+  margin-bottom: 0.5rem;
+  color: #f0f0f0;
+}
+
+.fees-box-right .fees-content li {
+  color: #444;
+}
+
+.fees-content > div {
+  margin-bottom: 2rem;
+}
+
+.fees-overlay-wood, .fees-deco-orchid-1, .fees-deco-orchid-2, .fees-deco-circle-1, .fees-deco-circle-2, .fees-deco-circle-3 {
+  position: absolute;
+}
+
+.fees-overlay-wood { top: 0; left: 0; right: 0; bottom: 0; background: repeating-linear-gradient(90deg, rgba(139,115,85,0.1) 0px, rgba(139,115,85,0.1) 2px, rgba(160,136,106,0.1) 2px, rgba(160,136,106,0.1) 4px); opacity: 0.3; }
+.fees-deco-orchid-1 { top: 2rem; right: 2rem; width: 80px; height: 80px; background: radial-gradient(circle, #c44ba0 20%, #a0386b 40%, #8b2f5a 60%); border-radius: 50% 40% 50% 40%; transform: rotate(45deg); opacity: 0.8; }
+.fees-deco-orchid-2 { top: 1.5rem; right: 1.5rem; width: 60px; height: 60px; background: radial-gradient(circle, #d668b8 30%, #b84590 50%); border-radius: 50% 35% 50% 35%; transform: rotate(-20deg); opacity: 0.9; }
+.fees-deco-circle-1 { top: 2rem; right: 3rem; width: 20px; height: 20px; background: rgba(255,255,255,0.4); border-radius: 50%; }
+.fees-deco-circle-2 { top: 4rem; right: 2rem; width: 15px; height: 15px; background: rgba(255,255,255,0.3); border-radius: 50%; }
+.fees-deco-circle-3 { top: 6rem; right: 4rem; width: 12px; height: 12px; background: rgba(255,255,255,0.2); border-radius: 50%; }
+
+
 /* Responsive Design */
 @media (max-width: 768px) {
   .grid-container {
@@ -1268,13 +1386,16 @@ footer {
     order: -1; /* Move image to the top */
   }
 
-  .fees .container > div,
   .location-map .container > div:first-of-type {
-    grid-template-columns: 1fr !important;
+    grid-template-columns: 1fr;
   }
 
-  .fees .container > div > div {
-    min-height: auto !important;
+  .fees-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .fees-box {
+    min-height: auto;
     padding: 2rem;
   }
 
