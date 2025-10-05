@@ -195,16 +195,6 @@
   }
 }
 
-/* Disable hover on mobile/tablet */
-@media (max-width: 768px) {
-  .dropdown:hover .dropdown-content,
-  .dropdown:focus-within .dropdown-content {
-    display: none;
-    opacity: 0;
-    transform: translateY(10px);
-    visibility: hidden;
-  }
-}
 
 /* Hamburger Icon */
 .navbar .icon {

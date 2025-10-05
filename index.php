@@ -28,7 +28,6 @@
         <h1>NorthPlace Therapy</h1>
         <p><em>PSYCHOTHERAPY – COACHING – COUNSELLING</em></p>
         <p><em>Marlow & Bisham</em>, and <em>Online</em></p>
-        <p>Helping you gain clarity, confidence, and control.</p>
         <button class="btn" id="contact-me-btn-hero">CONTACT ME</button>
       </div>
       
@@ -74,7 +73,7 @@
     </header><br><br><br>
 
 
-    <div class="services-highlight" style="text-align:center; padding:2rem 1rem;"><h2>PSYCHOTHERAPY‑COACHING‑COUNSELLING</h2></div>
+    <div class="services-highlight" style="text-align:center; padding:2rem 1rem;"><h2>PSYCHOTHERAPY-COACHING-COUNSELLING</h2></div>
 
     <section class="fade-in-section">
         <div class="grid-container">
@@ -442,7 +441,7 @@
       </div>
     </section>
     
-    <div style="text-align: center; margin-top: 2rem; margin-left: 20rem; margin-right: 20rem;  margin-bottom: 10rem;background-color: white; padding: 20px 20px 20px 20px;">
+    <div class="commitment-section">
         <h2>NorthPlace Commitment to You – Ethical Practice</h2> <br>
         <p>Work is conducted in accordance with the BACP Ethical Framework for Good Practice (here). In line with BACP requirements, I work under the guidance of a supervisor to discuss clinical work. Confidentiality is always maintained, and your identity will not be disclosed. </p><br>
     
