@@ -1,0 +1,1238 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@400;700&display=swap');
+
+:root {
+  /* Core Palette - Modernized */
+  --light-cream: #F5F3EF; /* Existing base */
+  --compass-blue: #4C6E81; /* Existing primary accent */
+  --deep-navy: #324A57;    /* Existing darker accent / headings */
+  --slate-blue: #5D7A8C;   /* New modern slate blue for CTAs/highlights */
+
+  --misty-grey: #D9D7D2;   /* Existing light neutral */
+  --warm-grey: #707070;    /* New darker warm grey for sub-text or subtle UI */
+  --charcoal: #333333;     /* New strong charcoal for primary body text */
+
+  --white: #FFFFFF;
+  --black: #000000;
+
+  /* Semantic Colors (optional but good practice) */
+  --background-primary: var(--light-cream);
+  --background-secondary: var(--white); /* For cards, sections */
+  --text-primary: var(--charcoal);
+  --text-secondary: var(--warm-grey);
+  --text-headings: var(--deep-navy);
+  --accent-primary: var(--compass-blue);
+  --accent-secondary: var(--slate-blue);
+
+  /* Font Families */
+  --font-family-headings: 'Playfair Display', serif;
+  --font-family-body: 'Lato', sans-serif;
+
+  /* RGB versions for box-shadows, etc. */
+  --rgb-accent-primary: 76, 110, 129; /* From --compass-blue: #4C6E81 */
+}
+
+html {
+  scroll-behavior: smooth; /* Enables smooth scrolling for anchor links */
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-family-body);
+  background-color: var(--background-primary);
+  color: var(--text-primary);
+  line-height: 1.7; /* Slightly increased for better readability with Lato */
+  -webkit-font-smoothing: antialiased; /* Smoother fonts on WebKit */
+  -moz-osx-font-smoothing: grayscale; /* Smoother fonts on Firefox */
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-family-headings);
+  color: var(--text-headings);
+  margin-top: 1.5em;
+  margin-bottom: 0.75em;
+  line-height: 1.3;
+}
+
+h1 { font-size: 2.8rem; }
+h2 { font-size: 2.2rem; }
+h3 { font-size: 1.8rem; }
+h4 { font-size: 1.4rem; }
+/* Adjust sizes as needed for design */
+
+p {
+  margin-bottom: 1.25rem;
+}
+
+a {
+  color: var(--accent-primary);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover, a:focus {
+  color: var(--accent-secondary);
+  text-decoration: underline;
+}
+
+/* Utility class for sr-only text if needed */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+
+/* HERO HEADER */
+header.hero {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.hero-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  opacity: 1;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom right, rgba(50, 74, 87, 0.5), rgba(50, 74, 87, 0.7));
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  padding: 2rem;
+  color: var(--light-cream);
+}
+
+.hero-content h1 {
+  font-size: 3rem; /* Base size for mobile */
+  font-weight: bold;
+  margin-bottom: 1rem;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.7);
+
+  /* Changing colour of text */
+  color: #F5F3EF !important;
+}
+@media (min-width: 768px) {
+  .hero-content h1 {
+    font-size: 4rem; /* Larger for tablet and up */
+  }
+}
+
+
+.hero-content p {
+  font-size: 1.1rem; /* Base size for mobile */
+  margin-bottom: 2rem;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.7);
+}
+@media (min-width: 768px) {
+  .hero-content p {
+    font-size: 1.25rem; /* Larger for tablet and up */
+  }
+}
+
+/* BUTTONS */
+.btn, button {
+  background-color: var(--compass-blue);
+  color: var(--light-cream);
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+}
+
+.btn:hover, button:hover {
+  background-color: var(--soft-sky-blue);
+}
+
+/* Hero content button hover override */
+.hero-content .btn:hover {
+    background-color: #D9D7D2 !important;
+    color: #4C6E81 !important;
+}
+
+.btn-contact {
+    background: var(--slate-blue);
+}
+
+.btn-contact:hover {
+    background: var(--soft-sky-blue);
+}
+
+/* SECTIONS */
+section { /* General styling for all sections */
+  padding: 3rem 1rem; /* Adjusted vertical padding for mobile */
+  max-width: 1200px;
+  margin: 1.5rem auto; /* Adjusted margin for mobile */
+  background-color: transparent !important; /* Getting rid of boxes on website */
+  box-shadow: none !important; /* Getting rid of boxed look */
+  /*background-color: var(--background-secondary); Use variable
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05); Softer shadow */
+}
+
+/* Specifically target the first section after the hero to ensure it has enough space */
+.hero + section { /* Selects the first section immediately following an element with class 'hero' */
+  margin-top: 4rem; /* More prominent top margin for the first content section */
+}
+
+/* Styles for the expanded "About Me" section */
+.about-me-expanded {
+  display: flex;
+  flex-wrap: wrap; /* Allow wrapping on smaller screens */
+  justify-content: space-around;
+  align-items: stretch; /* Make boxes same height if content differs */
+  gap: 2rem; /* Space between boxes */
+  padding: 3rem 2vw; /* Overall padding for the section */
+  /* Remove previous full-width background/border, will be on individual boxes */
+  background: none;
+  border: none;
+  max-width: 1400px; /* Max width for the content area */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.about-image-container,
+.about-text-container {
+  flex-basis: calc(48% - 1rem); /* Each box takes roughly half, accounting for gap */
+  min-width: 300px; /* Minimum width before wrapping or shrinking too much */
+  padding: 2rem;
+  /*background-color: var(--white);*/
+  background-color: transparent;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  border-radius: 8px;
+  transform: skewX(-3deg); /* Subtle skew */
+  transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+}
+
+.about-image-container:hover,
+.about-text-container:hover {
+  transform: skewX(0deg) scale(1.03); /* Unskew and slightly enlarge on hover */
+  box-shadow: 0 8px 25px rgba(var(--rgb-accent-primary), 0.15);
+}
+
+/* Counter-skew content if needed, or style content directly */
+.about-image-container > *,
+.about-text-container > * {
+  transform: skewX(3deg); /* Counter-skew the content */
+}
+.about-text-container h2, .about-text-container p {
+    transform: skewX(3deg); /* Ensure direct children are counter-skewed */
+}
+
+
+.about-image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.about-me-expanded .profile-photo {
+  max-width: 100%;
+  height: auto;
+  max-height: 350px; /* Max height for the photo */
+  border-radius: 6px; /* Match container's radius */
+  object-fit: cover;
+  /* transform: skewX(3deg); /* Counter-skew if image is direct child */
+}
+
+.about-me-expanded h2 {
+  color: var(--deep-navy);
+  text-align: left; /* Align heading to the left in its box */
+  margin-top: 0; /* Remove top margin if first element in box */
+}
+
+.about-me-expanded p {
+  color: var(--charcoal);
+  /* max-width: 900px; */ /* No longer needed as text is in its own box */
+  /* margin-left: auto; */ /* No longer needed */
+  /* margin-right: auto; */ /* No longer needed */
+  text-align: left;
+}
+
+/* Responsive adjustments for the About Me boxes */
+@media (max-width: 900px) {
+  .about-me-expanded {
+    flex-direction: column;
+    align-items: center; /* Center boxes when stacked */
+  }
+  .about-image-container,
+  .about-text-container {
+    flex-basis: 80%; /* Allow boxes to be wider when stacked */
+    transform: skewX(0deg); /* Remove skew on smaller screens if it causes issues */
+    margin-bottom: 1.5rem;
+  }
+  .about-image-container > *,
+  .about-text-container > *,
+  .about-text-container h2,
+  .about-text-container p {
+    transform: skewX(0deg); /* Remove counter-skew */
+  }
+  .about-me-expanded .profile-photo {
+    max-height: 300px;
+  }
+}
+
+
+.about, .services, .testimonials, .contact {
+  /* Keep specific padding if needed, or remove if general 'section' padding is enough */
+  /* padding: 3rem 1rem; */ /* Already handled by 'section' tag styling */
+  /* max-width: 1200px; */ /* Already handled by 'section' tag styling */
+  /* margin: 0 auto; */ /* Already handled by 'section' tag styling */
+}
+
+.about h2, .services h2, .testimonials h2, {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: var(--deep-navy);
+}
+
+/* PROFILE IMAGE */
+.profile-photo {
+  width: 150px;
+  border-radius: 50%;
+  display: block;
+  margin: 1rem auto;
+}
+
+.blog-swiper {
+  width: 100%;
+  padding: 40px 0;
+}
+
+.blog-swiper .swiper-slide {
+  display: flex;
+  justify-content: center;
+}
+
+.blog-post-card {
+  max-width: 320px;
+  width: 100%;
+  /*background-color: #fff;*/
+  background-color: transparent;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  transition: transform 0.3s;
+}
+
+.blog-post-card:hover {
+  transform: scale(1.02);
+}
+
+.blog-post-thumbnail {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.blog-post-content {
+  padding: 15px;
+}
+
+.blog-post-content h3 {
+  margin-top: 0;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  color: #333;
+}
+
+/* SERVICE CARDS CAROUSEL / SWIPER */
+.services { /* The main section container */
+  position: relative; /* For absolute positioning of nav buttons if needed */
+  overflow: hidden; /* Recommended for Swiper sections */
+}
+
+.service-swiper.swiper-container {
+  width: 100%;
+  padding-top: 20px; /* Space for pagination if it's outside */
+  padding-bottom: 50px; /* Space for pagination/navigation */
+}
+
+.service-swiper .swiper-slide {
+  display: flex; /* Allows for centering content if needed */
+  flex-direction: column;
+  justify-content: space-between; /* Pushes content and button apart if there was a button */
+  height: auto; /* Let content define height, or set fixed height */
+  box-sizing: border-box;
+  /* transition: transform 0.3s ease; */ /* Swiper handles its own transitions */
+}
+
+/* Styling for the existing .card class, now used as .swiper-slide */
+.service-swiper .card {
+  /* min-width is not needed as Swiper handles slide width */
+  /* max-width can be controlled by slidesPerView or CSS width on .swiper-slide */
+  width: 80%; /* Default for single slide view on smaller screens */
+  /* max-width: 380px; /* Max width of a card */
+  /*background-color: var(--background-secondary); Use semantic variable */
+  background-color: transparent;
+  padding: 2rem;
+  border-radius: 12px; /* Slightly less rounded for a more modern feel */
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08); /* Softer, more diffused shadow */
+  border: 1px solid #E0E0E0; /* Subtle border */
+  text-align: center; /* Center text within cards */
+  margin: 0 auto; /* Center card if slidesPerView is 1 and card width is less than container */
+}
+
+.service-swiper .card:hover {
+  /* transform: translateY(-5px); */ /* Swiper might interfere; consider other hover effects */
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+}
+
+.service-swiper .card h3 {
+  font-size: 1.5rem; /* Adjust based on new typography */
+  color: var(--text-headings);
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+}
+
+.service-swiper .card p {
+  font-size: 0.95rem; /* Adjust based on new typography */
+  color: var(--text-primary);
+  line-height: 1.6;
+  flex-grow: 1; /* Allows p to take up space if card is flex container */
+}
+
+
+/* Swiper Pagination and Navigation */
+.service-swiper .swiper-pagination {
+  bottom: 10px; /* Adjust position */
+}
+.service-swiper .swiper-pagination-bullet {
+  /*background-color: var(--warm-grey);*/
+  background-color: transparent;
+  opacity: 0.7;
+  width: 10px;
+  height: 10px;
+  transition: background-color 0.3s ease, opacity 0.3s ease;
+}
+
+.service-swiper .swiper-pagination-bullet-active {
+  background-color: var(--accent-primary);
+  opacity: 1;
+}
+
+.service-swiper .swiper-button-next,
+.service-swiper .swiper-button-prev {
+  color: var(--accent-primary); /* Use accent color */
+  width: 28px; /* Smaller nav buttons */
+  height: 28px;
+  /* background-color: rgba(255, 255, 255, 0.7); */ /* Optional background for better visibility */
+  /* border-radius: 50%; */
+  top: 50%; /* Vertically center */
+  transform: translateY(-50%);
+  transition: color 0.3s ease;
+}
+.service-swiper .swiper-button-next:hover,
+.service-swiper .swiper-button-prev:hover {
+  color: var(--accent-secondary);
+}
+
+.service-swiper .swiper-button-next::after,
+.service-swiper .swiper-button-prev::after {
+  font-size: 1.2rem; /* Smaller arrow icons */
+  font-weight: bold;
+}
+
+/* Hide nav buttons on very small screens if they clutter, show on tablet+ */
+@media (max-width: 600px) {
+  .service-swiper .swiper-button-next,
+  .service-swiper .swiper-button-prev {
+    display: none;
+  }
+}
+
+
+/* RESPONSIVE CARD SIZES for swiper (slidesPerView will handle most of this) */
+/* We will control number of slides via JS, but can set max-widths here */
+
+/* TESTIMONIALS */
+.testimonials { /* The main section container */
+  background: linear-gradient(180deg, var(--light-cream) 0%, #EAE8E3 100%); /* Light cream to a slightly darker, warmer tone */
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+.testimonial {
+  background-color: var(--white); /* Brighter background for cards */
+  color: var(--charcoal); /* Main text color */
+  border: 1px solid var(--misty-grey);
+  border-left: 5px solid var(--accent-secondary); /* Prominent color accent */
+  padding: 1.5rem 2rem; /* Adjust padding */
+  margin-left: auto; /* Center testimonial cards if they are narrower than container */
+  margin-right: auto;
+  margin-bottom: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.07); /* Slightly enhanced shadow */
+  max-width: 700px; /* Max width for a single testimonial for readability */
+  opacity: 0; /* Initially hidden for JS control */
+  transition: opacity 0.75s ease-in-out; /* Fade transition */
+  display: none; /* JS will change to display: block or flex when active */
+}
+
+.testimonial.active {
+  opacity: 1;
+  display: block; /* Or 'flex' if inner content needs flex properties */
+}
+
+.testimonial blockquote {
+  color: var(--text-primary); /* Ensure quote text is clear */
+  margin-bottom: 0.5rem;
+  font-style: italic;
+}
+
+.testimonial cite {
+  font-style: normal;
+  font-size: 0.9rem;
+  color: var(--compass-blue);
+  display: block; /* Ensure it takes its own line or aligns well */
+  text-align: right;
+}
+
+/* Generic Page Content styling for new pages (about.php, faq.php, issues pages, etc.) */
+.page-content {
+  background-color: var(--background-secondary); /* Use semantic variable */
+  padding: 2rem 1rem; /* Adjusted padding for mobile */
+  margin: 2rem auto; /* Adjusted margin for mobile */
+  max-width: 900px; /* Optimized for readability of text-heavy content */
+  border-radius: 8px; /* Consistent with other section styling */
+  box-shadow: 0 6px 18px rgba(0,0,0,0.07); /* Softer, more diffused shadow */
+  border: 1px solid #e0e0e0; /* Subtle border for definition */
+}
+
+@media (min-width: 768px) {
+  .page-content {
+    padding: 3rem 2.5rem; /* More padding on larger screens */
+  }
+}
+
+/* Headings within .page-content will inherit from base h1-h6 styles (Playfair Display, --text-headings) */
+.page-content h2 {
+  text-align: center; /* Keep titles centered for these pages */
+  margin-top: 0; /* Remove top margin if it's the first element */
+  margin-bottom: 2rem; /* More space after main title */
+  font-size: 2.4rem; /* Ensure good hierarchy */
+}
+
+.page-content h3 {
+  /* font-family: var(--font-family-headings); // Inherited */
+  /* color: var(--text-headings); // Inherited, or use --accent-primary for sub-headings */
+  color: var(--accent-primary); /* Make H3s stand out a bit more */
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  font-size: 1.7rem; /* Ensure good hierarchy */
+}
+
+/* Paragraphs and Lists will inherit from base p, ul, ol styles (Lato, --text-primary, line-height 1.7) */
+.page-content p,
+.page-content ul li,
+.page-content ol li {
+  /* color: var(--text-primary); // Inherited */
+  /* line-height: 1.7; // Inherited */
+  font-size: 1rem; /* Standard body font size */
+}
+
+.page-content p {
+  margin-bottom: 1.25rem; /* Consistent with base p styling */
+}
+
+.page-content ul,
+.page-content ol {
+  padding-left: 1.5em; /* Standard indentation */
+  margin-bottom: 1.25rem;
+}
+
+.page-content ul li,
+.page-content ol li {
+  margin-bottom: 0.5rem; /* Spacing between list items */
+}
+
+/* Links within .page-content will inherit from base 'a' styles */
+.page-content a {
+  /* color: var(--accent-primary); // Inherited */
+  text-decoration: underline; /* Make links clearer in dense text */
+  font-weight: 600; /* Slightly bolder for emphasis */
+}
+
+.page-content a:hover,
+.page-content a:focus {
+  /* color: var(--accent-secondary); // Inherited */
+  text-decoration: none; /* Remove underline on hover if preferred */
+}
+
+/* Add a horizontal rule style if used for separation */
+.page-content hr {
+  border: 0;
+  height: 1px;
+  background-color: var(--misty-grey);
+  margin: 2.5rem 0;
+}
+
+/* General Form Styling within .page-content (e.g. for Login, Profile forms) */
+.page-content form {
+  display: grid;
+  gap: 1.25rem;
+  margin-top: 1.5rem; /* Space above the form if there's a heading */
+}
+
+.page-content .form-field {
+  /* Container for label + input if needed, or style inputs directly */
+}
+
+.page-content label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-family: var(--font-family-body);
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.page-content input[type="text"],
+.page-content input[type="email"],
+.page-content input[type="password"],
+.page-content input[type="tel"],
+.page-content input[type="date"],
+.page-content textarea {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  font-family: var(--font-family-body);
+  font-size: 1rem;
+  color: var(--text-primary);
+  background-color: var(--white);
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.page-content input:focus,
+.page-content textarea:focus {
+  outline: none;
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 0 3px rgba(var(--rgb-accent-primary, 76, 110, 129), 0.25);
+}
+
+.page-content textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.page-content button[type="submit"],
+.page-content .btn { /* Also style general buttons within page-content if needed */
+  font-family: var(--font-family-body);
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--white);
+  background-color: var(--accent-primary);
+  padding: 0.9rem 1.8rem;
+  border: none; /* Assuming .btn base style handles this */
+  border-radius: 6px; /* Assuming .btn base style handles this */
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  text-align: center;
+  display: inline-block; /* if not full width */
+}
+
+.page-content button[type="submit"]:hover,
+.page-content button[type="submit"]:focus,
+.page-content .btn:hover,
+.page-content .btn:focus {
+  background-color: var(--accent-secondary);
+  transform: translateY(-2px); /* Optional: if not handled by .btn base */
+}
+
+/* Google Sign-In Button Styling */
+.btn-google {
+  background-color: #FFFFFF; /* Google's standard white */
+  color: #4285F4; /* Google's blue */
+  border: 1px solid #DADCE0; /* Subtle border */
+  padding: 0.75rem 1.5rem; /* Match other buttons or adjust */
+  font-family: var(--font-family-body); /* Ensure consistent font */
+  font-weight: 700;
+  text-decoration: none;
+  display: inline-flex; /* To align image and text */
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.btn-google:hover {
+  background-color: #F8F9FA; /* Slight hover effect */
+  border-color: #C6CACC;
+  color: #4285F4; /* Keep text color consistent */
+  transform: none; /* Override default btn hover transform if not desired */
+}
+
+.btn-google img {
+  margin-right: 0.75em; /* Space between logo and text */
+  height: 1.2em; /* Adjust size as needed */
+}
+
+
+/* Profile Card Styling (for profile.php) */
+.profile-card {
+    background-color: var(--white);
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    margin-bottom: 1.5rem; /* Replaces margin-top on individual cards in profile.php */
+}
+.profile-card:last-child {
+    margin-bottom: 0; /* No bottom margin for the last card in a sequence */
+}
+.profile-card h3 {
+    margin-top: 0;
+    color: var(--deep-navy);
+    border-bottom: 1px solid var(--misty-grey);
+    padding-bottom: 0.75rem;
+    margin-bottom: 1rem;
+    font-size: 1.5rem; /* Consistent with other H3s or adjust as needed */
+}
+.profile-card p {
+    margin-bottom: 0.75rem;
+    line-height: 1.6;
+}
+.profile-card p strong {
+    color: var(--text-headings); /* Or var(--deep-navy) for consistency with h3 */
+}
+.profile-card .btn { /* Ensure buttons within profile cards are styled if not covered by .page-content .btn */
+    /* Styles here if .page-content .btn isn't specific enough or if cards are outside .page-content */
+    /* For now, assuming .page-content .btn covers it. */
+}
+
+
+/* Styling for server-side success/error messages (already have .success-message, .error-message) */
+/* Ensure they are styled well within the form context */
+.contact .success-message,
+.contact .error-message {
+  padding: 1rem;
+  margin-bottom: 1.5rem; /* Ensure spacing before the form elements if message is at top */
+  text-align: left; /* Or center, depending on placement */
+}
+.contact .error-message { /* Ensure this is distinct for PHP errors */
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+
+/* SUCCESS MESSAGE */
+.success-message {
+  background-color: #d4edda;
+  color: #155724;
+  padding: 0.5rem;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+}
+
+.error-message {
+  background-color: #f8d7da; /* Light red */
+  color: #721c24; /* Dark red */
+  padding: 0.75rem;
+  border: 1px solid #f5c6cb; /* Lighter red border */
+  border-radius: 6px;
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 1rem;
+  background-color: var(--compass-blue);
+  color: var(--light-cream);
+  padding: 1.5rem 1rem; /* Ensure reasonable padding on mobile */
+}
+@media (min-width: 768px) {
+  footer {
+    padding: 2rem 1rem; /* Restore or increase padding on larger screens */
+  }
+}
+
+
+/* Subtle fade-in on scroll effect */
+.fade-in-section {
+  opacity: 0;
+  transform: translateY(20px); /* Optional: slight upward movement */
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  will-change: opacity, transform; /* Performance hint */
+}
+
+.fade-in-section.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hero.fade-out {
+  opacity: 0;
+  transition: opacity 1s ease-out;
+}
+
+.hero.hidden {
+  display: none;
+}
+
+.hero-follow {
+  opacity: 0;
+}
+
+.hero-follow.fade-in {
+  opacity: 1;
+  transition: opacity 1s ease-in;
+}
+
+/* Hero Follow Section */
+.hero-follow {
+  background-color: #f9f9f9;
+}
+
+.hero-follow h1 {
+  font-weight: normal;
+  margin-bottom: 0.5rem;
+}
+
+.hero-follow p {
+  margin-top: 0;
+  color: var(--text-secondary);
+}
+
+.hero-follow .btn-contact {
+  background-color: var(--slate-blue);
+  color: var(--white);
+  transition: background-color 0.3s ease;
+}
+
+.hero-follow .btn-contact:hover {
+  background-color: var(--compass-blue);
+}
+
+/* Services Highlight Section */
+.services-highlight h2 {
+  font-weight: 300;
+  margin: 0;
+  letter-spacing: 2px;
+}
+
+@media (max-width: 768px) {
+  .hero-follow h1 {
+    font-size: 2rem;
+  }
+
+  .services-highlight h2 {
+    font-size: 1.2rem;
+  }
+}
+
+/* Preloader Styles */
+#preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--light-cream); /* Or your desired background */
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 1;
+  transition: opacity 0.5s ease-out; /* Fade out transition */
+}
+
+#preloader.hidden {
+  opacity: 0;
+  pointer-events: none; /* Allow interaction with page content after hiding */
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid var(--misty-grey); /* Light color for the spinner track */
+  border-top-color: var(--compass-blue); /* Accent color for the spinning part */
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.blog-listing-header {
+  text-align: center;
+  padding: 2rem 1rem;
+  background-color: #f9f9f9;
+  border-bottom: 1px solid #eee;
+}
+
+.blog-listing-header h1 {
+  margin-bottom: 0.5rem;
+}
+
+.blog-subtitle {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  padding: 2rem 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.blog-post-card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.blog-post-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.blog-post-thumbnail {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.blog-post-content {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.blog-post-content h3 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+.post-meta-listing {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+
+.blog-post-excerpt {
+  flex-grow: 1;
+  margin-bottom: 1rem;
+}
+
+.back-to-home {
+  padding-bottom: 2rem;
+}
+
+.no-posts-message {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: var(--text-secondary);
+}
+
+/* --- Blog Post Specific Styling --- */
+
+/* For the main banner image of a blog post */
+.blog-post-banner-image {
+  width: 100%; /* Make it take the full width of its container */
+  max-width: 100%; /* Ensure it doesn't overflow its container */
+  height: auto;   /* Maintain aspect ratio */
+  display: block; /* Remove extra space below the image */
+  margin-bottom: 1.5rem; /* Space below the banner image */
+  border-radius: 8px; /* Optional: match other rounded corners */
+}
+
+/* For images within the blog post content body */
+.blog-post-body img {
+  max-width: 100%; /* Ensure images don't overflow content area */
+  height: auto;    /* Maintain aspect ratio */
+  display: block;  /* Can help with spacing, or inline-block if text wrapping is desired */
+  margin: 1rem auto; /* Center images and add some vertical spacing */
+  border-radius: 4px; /* Optional: subtle rounding */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1); /* Optional: subtle shadow */
+}
+
+/* Improve typography and spacing for single blog posts */
+.blog-post-full {
+  padding: 1rem; /* Add some padding around the post content */
+}
+
+@media (min-width: 768px) {
+  .blog-post-full {
+    padding: 1.5rem 2rem; /* More padding on larger screens */
+  }
+}
+
+.blog-post-header h1 {
+  font-size: 2.5rem; /* Adjust as needed */
+  margin-bottom: 0.5rem;
+}
+
+.blog-post-full .post-meta {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+  display: block;
+}
+
+.blog-post-body {
+  font-size: 1.05rem; /* Slightly larger for readability */
+  line-height: 1.8; /* More spacing for text */
+  color: var(--text-primary);
+}
+
+.blog-post-body p {
+  margin-bottom: 1.25rem;
+}
+
+.blog-post-body h2,
+.blog-post-body h3,
+.blog-post-body h4 {
+  font-family: var(--font-family-headings);
+  color: var(--text-headings);
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.blog-post-body ul,
+.blog-post-body ol {
+  margin-bottom: 1.25rem;
+  padding-left: 1.8em;
+}
+
+.blog-post-body li {
+  margin-bottom: 0.5rem;
+}
+
+.blog-post-body a {
+  color: var(--accent-secondary); /* Use a slightly different accent for links within posts */
+  text-decoration: underline;
+}
+
+.blog-post-body a:hover {
+  color: var(--accent-primary);
+}
+
+.blog-post-body blockquote {
+  border-left: 4px solid var(--misty-grey);
+  padding-left: 1rem;
+  margin-left: 0;
+  margin-right: 0;
+  font-style: italic;
+  color: var(--text-secondary);
+}
+
+/* Password wrapper for show/hide button */
+.password-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.password-wrapper input { /* Applies to password and text types */
+  padding-right: 4rem; /* Space for the button */
+}
+.toggle-password-button {
+  position: absolute;
+  right: 0.25rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+  padding: 0.5rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  border-radius: 4px;
+}
+.toggle-password-button:hover {
+  color: var(--text-primary);
+  background-color: #EAEAEA;
+}
+
+#signup-form small {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  padding-left: 0.2rem;
+}
+
+/* Checkbox styling */
+#signup-form .form-checkbox-group {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding-top: 0.5rem;
+}
+#signup-form .form-checkbox-group input[type="checkbox"] {
+  width: 1.15em;
+  height: 1.15em;
+  accent-color: var(--accent-primary);
+}
+#signup-form .form-checkbox-group .checkbox-label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+/* Divider "or" */
+.divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 1.25rem 0;
+}
+.divider::before, .divider::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid #EAEAEA;
+}
+.divider span {
+  padding: 0 1rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+/* Form validation messages */
+.signup-card .success-message,
+.signup-card .error-message {
+  padding: 0.75rem 1rem;
+  margin-bottom: 1.5rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  text-align: center;
+}
+.signup-card .success-message {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+.signup-card .error-message {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+
+/*making transition from video work */
+.hero, .hero-follow {
+  position: relative;
+  transition:
+    opacity 1.2s ease,
+    transform 1.2s ease;
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  width: 100%;
+}
+
+.hidden {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-30px) scale(0.95);
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* New Sections */
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: center;
+}
+
+.image-container img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+/* Popup container */
+.popup-container {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.4);
+}
+
+/* Popup content */
+.popup-content {
+  background-color: #fefefe;
+  margin: 5% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 700px;
+  position: relative;
+  border-radius: 8px;
+}
+
+/* Close button */
+.close-btn {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#nextSection, #contactFormPopup {
+  transition: width 0.5s;
+  float: left;
+  box-sizing: border-box;
+}

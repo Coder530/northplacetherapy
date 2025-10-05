@@ -1,0 +1,299 @@
+/* Admin Panel Specific Styles */
+body.admin-body { /* If you want to scope admin styles more tightly */
+    background-color: #f0f2f5; /* Light grey background for admin area */
+    color: var(--text-primary); /* Use variable */
+    font-family: var(--font-family-body); /* Use variable */
+}
+
+.admin-header {
+    background-color: var(--deep-navy); /* Using existing variable */
+    color: var(--light-cream);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.admin-header h1 {
+    font-family: var(--font-family-headings);
+    font-size: 1.8rem;
+    margin: 0;
+    color: var(--light-cream); /* Ensure h1 color is light */
+}
+.admin-header .btn-secondary { /* Style for logout button */
+    background-color: var(--slate-blue);
+    color: var(--white);
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+}
+.admin-header .btn-secondary:hover {
+    background-color: var(--compass-blue);
+}
+
+
+.admin-container {
+    max-width: 1400px;
+    margin: 2rem auto;
+    padding: 1rem; /* Padding for the overall container */
+    background-color: var(--white);
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.07);
+}
+
+/* Login Section */
+.login-section {
+    max-width: 400px;
+    margin: 3rem auto;
+    padding: 2rem;
+    background-color: #fff;
+    border: 1px solid var(--misty-grey);
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+.login-section h2 {
+    text-align: center;
+    color: var(--text-headings);
+    margin-bottom: 1.5rem;
+}
+.login-section div {
+    margin-bottom: 1rem;
+}
+.login-section label {
+    display: block;
+    margin-bottom: 0.3rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+}
+.login-section input[type="text"],
+.login-section input[type="password"] {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--misty-grey);
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-size: 1rem;
+}
+.login-section .btn { /* Login button */
+    width: 100%;
+    padding: 0.8rem;
+    font-size: 1rem;
+    background-color: var(--accent-primary);
+}
+.login-section .btn:hover {
+    background-color: var(--accent-secondary);
+}
+.login-section .error-message { /* Error message for login */
+    margin-bottom: 1rem;
+    padding: 0.75rem; /* This is fine */
+}
+
+/* General Admin Button Styling - to match site's .btn */
+.admin-container .btn,
+.login-section .btn,
+#blog-poster .btn { /* Target main action buttons */
+    background-color: var(--accent-primary);
+    color: var(--light-cream);
+    padding: 0.75rem 1.5rem; /* Match main site .btn */
+    border: none;
+    border-radius: 8px; /* Match main site .btn */
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    cursor: pointer;
+    font-family: var(--font-family-body); /* Ensure font consistency */
+    font-weight: 700; /* Match main site .btn */
+    font-size: 1rem; /* Match main site .btn, or page-content .btn */
+}
+
+.admin-container .btn:hover,
+.login-section .btn:hover,
+#blog-poster .btn:hover {
+    background-color: var(--accent-secondary);
+    transform: translateY(-2px); /* Consistent hover effect */
+}
+
+/* Specific overrides for buttons that need to be different */
+.admin-header .btn-secondary { /* Already specific, keep as is */
+    background-color: var(--slate-blue);
+    color: var(--white);
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+    border-radius: 8px; /* Harmonize radius */
+}
+.admin-header .btn-secondary:hover {
+    background-color: var(--compass-blue);
+    transform: none; /* No transform for header button if preferred */
+}
+
+.login-section .btn { /* Ensure it's full width if that was intended */
+    width: 100%;
+}
+
+
+/* Admin Navigation Tabs */
+.admin-nav {
+    margin-bottom: 2rem;
+    border-bottom: 1px solid var(--misty-grey);
+}
+.admin-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+.admin-nav li {
+    margin-right: 0; /* Remove right margin if items are to fill space or use gap */
+}
+.admin-nav a {
+    display: block;
+    padding: 0.8rem 1.5rem;
+    text-decoration: none;
+    color: var(--text-secondary);
+    font-weight: 600;
+    border-bottom: 3px solid transparent;
+    transition: color 0.3s ease, border-bottom-color 0.3s ease;
+}
+.admin-nav a:hover {
+    color: var(--accent-primary);
+}
+.admin-nav a.active {
+    color: var(--accent-primary);
+    border-bottom-color: var(--accent-primary);
+}
+
+/* Admin Sections */
+.admin-section {
+    display: none; /* Hidden by default, shown by JS */
+    padding: 1.5rem;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    margin-top: 1rem; /* Space if nav is outside this padding */
+    background-color: #fdfdfd; /* Slightly off-white for section background */
+}
+.admin-section.active-section {
+    display: block;
+}
+.admin-section h2 {
+    color: var(--text-headings);
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--misty-grey);
+}
+
+/* Table Styles for Appointments */
+.table-responsive {
+    overflow-x: auto; /* Allows table to be scrolled horizontally on small screens */
+}
+.admin-section table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+.admin-section th, .admin-section td {
+    text-align: left;
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--misty-grey);
+    font-size: 0.9rem;
+}
+.admin-section th {
+    background-color: #f8f9fa; /* Light grey for table headers */
+    font-weight: 700;
+    color: var(--deep-navy);
+}
+.admin-section td {
+    color: var(--text-primary);
+}
+.admin-section tr:nth-child(even) td {
+    background-color: #fdfdfd; /* Subtle striping for rows */
+}
+.admin-section tr:hover td {
+    background-color: #f1f1f1; /* Hover effect for rows */
+}
+.admin-section .btn-small {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
+    background-color: var(--slate-blue);
+}
+.admin-section .btn-small:hover {
+    background-color: var(--compass-blue);
+}
+
+/* Blog Poster Form */
+#blog-poster form div {
+    margin-bottom: 1.25rem;
+}
+#blog-poster label {
+    display: block;
+    margin-bottom: 0.4rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+}
+#blog-poster input[type="text"],
+#blog-poster input[type="file"] {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--misty-grey);
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-size: 1rem;
+}
+#blog-poster input[type="file"] {
+    padding: 0.5rem; /* Different padding for file input if needed */
+}
+
+/* Styles for TinyMCE (it largely styles itself, but you can override container) */
+.tox-tinymce {
+    border: 1px solid var(--misty-grey) !important; /* Ensure border for editor */
+    border-radius: 6px;
+}
+
+#blog-poster .btn { /* Publish button */
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    background-color: var(--accent-primary);
+}
+#blog-poster .btn:hover {
+    background-color: var(--accent-secondary);
+}
+
+/* Success and Error Messages in Admin */
+.admin-section .success-message,
+.admin-section .error-message {
+    padding: 0.8rem 1rem;
+    margin-bottom: 1.25rem;
+    border-radius: 6px;
+    font-size: 0.95rem;
+}
+.admin-section .success-message {
+    background-color: #d1e7dd; /* Bootstrap success green */
+    color: #0f5132;
+    border: 1px solid #badbcc;
+}
+.admin-section .error-message {
+    background-color: #f8d7da; /* Bootstrap danger red */
+    color: #842029;
+    border: 1px solid #f5c2c7;
+}
+
+
+.admin-footer {
+    text-align: center;
+    margin-top: 3rem;
+    padding: 1.5rem;
+    background-color: #e9ecef; /* Light grey for footer */
+    color: var(--warm-grey);
+    font-size: 0.9rem;
+    border-top: 1px solid var(--misty-grey);
+}
+
+/* Ensure general button styles from style.css don't conflict too much or override here */
+.admin-container .btn { /* Base button style for admin if needed */
+    /* color: var(--white); */
+    /* ... other shared styles ... */
+}
+.admin-container .btn-secondary {
+    /* Styles for secondary buttons in admin */
+}
+
+/* Add any other specific admin styles here */
