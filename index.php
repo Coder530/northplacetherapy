@@ -18,7 +18,7 @@
     include("navbar.php");
     ?>
 
-  <header class="hero" id="hero">
+    <header class="hero" id="hero">
       <video autoplay muted loop playsinline class="hero-video">
         <source src="images/northplacebg.mp4" type="video/mp4" />
         Your browser does not support the video tag.
@@ -26,55 +26,69 @@
       <div class="overlay"></div>
       <div class="hero-content">
         <h1>NorthPlace Therapy</h1>
-        <p><em>PSYCHOTHERAPY – COACHING – COUNSELLING</em></p>
-        <p><em>Marlow & Bisham</em>, and <em>Online</em></p>
-        <p>Helping you gain clarity, confidence, and control.</p>
-        <button class="btn" id="contact-me-btn-hero">CONTACT ME</button>
+        <p>Confidential, flexible, tailored to you.</p>
+        <a href="contact.php" class="btn" style="size: 15px;">CONTACT ME</a>
       </div>
-      
+    </header>
+
+
+    <section id="nextSection" class="flip-wrapper">
+      <div class="flip-inner" id="flipInner">
+
+        <!-- Front (original content) -->
+        <div class="flip-face front">
+          <!-- Keep your original front section content here -->
+          <h1>NorthPlace Therapy</h1>
+          <h3>PSYCHOTHERAPY – COACHING – COUNSELLING</h3>
+          <p><em>Marlow & Bisham</em>, and <em>Online</em></p>
+          <p>Helping you gain clarity, confidence, and control.</p>
+          <button class="btn" id="contact-me-btn-hero">CONTACT ME</button>
+        </div>
+
         <style>
-            /* Making Buttons Shimmery */
-            #contact-me-btn-hero {
-                background: linear-gradient(135deg, var(--compass-blue), var(--slate-blue));
-                color: var(--white);
-                border: none;
-                padding: 1rem 2rem;
-                font-size: 1rem;
-                font-family: var(--font-family-body);
-                font-weight: 700;
-                border-radius: 8px;
-                cursor: pointer;
-                transition: all 0.3s ease;
-                letter-spacing: 0.02em;
-                margin-top: 0.5rem;
-                position: relative;
-                overflow: hidden;
-            }
-            
-            #contact-me-btn-hero::before {
-                content: '';
-                position: absolute;
-                top: 0;
-                left: -100%;
-                width: 100%;
-                height: 100%;
-                background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-                transition: left 0.5s ease;
-            }
-            
-            #contact-me-btn-hero:hover::before {
-                left: 100%;
-            }
-            
-            #contact-me-btn-hero:hover {
-                transform: translateY(-2px);
-                box-shadow: 0 6px 20px rgba(var(--rgb-accent-primary), 0.3);
-            }
+          /* Making Buttons Shimmery */
+          #contact-me-btn-hero {
+            background: linear-gradient(135deg, var(--compass-blue), var(--slate-blue));
+            color: var(--white);
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            font-family: var(--font-family-body);
+            font-weight: 700;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            letter-spacing: 0.02em;
+            margin-top: 0.5rem;
+            position: relative;
+            overflow: hidden;
+          }
+
+          #contact-me-btn-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+          }
+
+          #contact-me-btn-hero:hover::before {
+            left: 100%;
+          }
+
+          #contact-me-btn-hero:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(var(--rgb-accent-primary), 0.3);
+          }
         </style>
-    </header><br><br><br>
+      </div>
+    </section>
 
 
-    <div class="services-highlight" style="text-align:center; padding:2rem 1rem;"><h2>PSYCHOTHERAPY‑COACHING‑COUNSELLING</h2></div>
+    <div class="services-highlight" style="text-align:center; padding:2rem 1rem;"><h2>PSYCHOTHERAPY-COACHING-COUNSELLING</h2></div>
 
     <section class="fade-in-section">
         <div class="grid-container">
@@ -442,7 +456,7 @@
       </div>
     </section>
     
-    <div style="text-align: center; margin-top: 2rem; margin-left: 20rem; margin-right: 20rem;  margin-bottom: 10rem;background-color: white; padding: 20px 20px 20px 20px;">
+    <div class="commitment-section">
         <h2>NorthPlace Commitment to You – Ethical Practice</h2> <br>
         <p>Work is conducted in accordance with the BACP Ethical Framework for Good Practice (here). In line with BACP requirements, I work under the guidance of a supervisor to discuss clinical work. Confidentiality is always maintained, and your identity will not be disclosed. </p><br>
     

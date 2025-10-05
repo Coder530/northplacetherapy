@@ -97,6 +97,8 @@ header.hero {
   align-items: center;
   justify-content: center;
   text-align: center;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .hero-video {
@@ -192,6 +194,7 @@ section { /* General styling for all sections */
   margin: 1.5rem auto; /* Adjusted margin for mobile */
   background-color: transparent !important; /* Getting rid of boxes on website */
   box-shadow: none !important; /* Getting rid of boxed look */
+  box-sizing: border-box;
   /*background-color: var(--background-secondary); Use variable
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05); Softer shadow */
@@ -842,6 +845,7 @@ footer {
   font-weight: 300;
   margin: 0;
   letter-spacing: 2px;
+  word-wrap: break-word;
 }
 
 @media (max-width: 768px) {
@@ -1231,10 +1235,26 @@ footer {
   cursor: pointer;
 }
 
-#nextSection, #contactFormPopup {
+#nextSection {
+  margin: 5% auto 0; /* Center horizontally */
+  width: 70%; /* Adjust width as needed */
+  max-width: 1000px; /* Set a max-width for large screens */
+}
+
+#contactFormPopup {
   transition: width 0.5s;
   float: left;
   box-sizing: border-box;
+}
+
+.commitment-section {
+  text-align: center;
+  margin-top: 2rem;
+  margin-left: 20rem;
+  margin-right: 20rem;
+  margin-bottom: 10rem;
+  background-color: white;
+  padding: 20px;
 }
 
 /* Responsive Design */
@@ -1269,20 +1289,19 @@ footer {
 
   /* Remove large horizontal margins */
   #nextSection {
-    margin-left: 5% !important;
-    margin-right: 5% !important;
-    width: 90% !important;
+    margin-left: 5%;
+    margin-right: 5%;
+    width: 90%;
   }
 
   .flip-wrapper {
     min-height: auto;
   }
 
-  /* Adjust commitment section margins */
-  div[style*="margin-left: 20rem"] {
-    margin-left: 1rem !important;
-    margin-right: 1rem !important;
-    margin-bottom: 2rem !important;
-    padding: 1.5rem !important;
+  .commitment-section {
+    margin-left: 1rem;
+    margin-right: 1rem;
+    margin-bottom: 4rem;
+    padding: 1.5rem;
   }
 }
