@@ -314,8 +314,8 @@
 
   .dropdown-content {
     display: none; /* Hidden by default on mobile */
-    position: static;
-    background-color: var(--background-secondary);
+    position: static; /* Let it flow within the li */
+    background-color: #f0f0f0; /* Slight background color for context */
     box-shadow: none;
     border: none;
     border-top: 1px dashed var(--misty-grey);
@@ -324,12 +324,10 @@
     padding: 0;
     margin: 0;
     border-radius: 0;
-    overflow-y: auto;
-    /* Reset desktop transforms for mobile */
+    /* Reset desktop transforms and opacity for mobile */
     transform: none;
     opacity: 1;
     visibility: visible;
-    z-index: 1002; /* Higher z-index to ensure visibility */
   }
   
   .dropdown.open .dropdown-content {

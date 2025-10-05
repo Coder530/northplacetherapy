@@ -31,6 +31,10 @@
   --rgb-accent-primary: 76, 110, 129; /* From --compass-blue: #4C6E81 */
 }
 
+html, body {
+    overflow-x: hidden;
+}
+
 html {
   scroll-behavior: smooth; /* Enables smooth scrolling for anchor links */
 }
@@ -370,7 +374,7 @@ section { /* General styling for all sections */
 /* SERVICE CARDS CAROUSEL / SWIPER */
 .services { /* The main section container */
   position: relative; /* For absolute positioning of nav buttons if needed */
-  overflow: hidden; /* Recommended for Swiper sections */
+  overflow: hidden; /* Prevent swiper from causing horizontal scroll */
 }
 
 .service-swiper.swiper-container {
@@ -1226,6 +1230,7 @@ footer {
   margin: 5% auto 0; /* Center horizontally */
   width: 70%; /* Adjust width as needed */
   max-width: 1000px; /* Set a max-width for large screens */
+  text-align: center;
 }
 
 #contactFormPopup {
@@ -1377,6 +1382,22 @@ footer {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+  .therapy-info, .fees {
+    padding: 2rem 1rem;
+  }
+
+  .info-grid {
+    display: block;
+  }
+
+  .info-column {
+      margin-bottom: 2rem;
+  }
+
+  .info-column:last-child {
+      margin-bottom: 0;
+  }
+
   .grid-container {
     grid-template-columns: 1fr;
   }

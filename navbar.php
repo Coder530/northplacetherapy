@@ -46,7 +46,6 @@ if (session_status() == PHP_SESSION_NONE) {
         <li><a href="social-anxiety.php" role="menuitem">Social Anxiety</a></li>
         <li><a href="sports-psychology.php" role="menuitem">Sports Psychology</a></li>
         <li><a href="motivation.php" role="menuitem">Motivation and Goal Achievement</a></li>
-        
         <li><a href="life-fulfilment.php" role="menuitem">Seeking Fulfillment in Life</a></li>
         <li><a href="blog.php" role="menuitem">Blog</a></li>
       </ul>
