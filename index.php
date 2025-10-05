@@ -18,7 +18,7 @@
     include("navbar.php");
     ?>
 
-    <header class="hero" id="hero">
+  <header class="hero" id="hero">
       <video autoplay muted loop playsinline class="hero-video">
         <source src="images/northplacebg.mp4" type="video/mp4" />
         Your browser does not support the video tag.
@@ -26,29 +26,15 @@
       <div class="overlay"></div>
       <div class="hero-content">
         <h1>NorthPlace Therapy</h1>
-        <p>Confidential, flexible, tailored to you.</p>
-        <a href="contact.php" class="btn" style="size: 15px;">CONTACT ME</a>
+        <p><em>PSYCHOTHERAPY – COACHING – COUNSELLING</em></p>
+        <p><em>Marlow & Bisham</em>, and <em>Online</em></p>
+        <p>Helping you gain clarity, confidence, and control.</p>
+        <button class="btn" id="contact-me-btn-hero">CONTACT ME</button>
       </div>
-    </header>
-
-
-    <center>
-        <section id="nextSection" class="flip-wrapper" style="margin-left: 15%; margin-top: 5%;">
-          <div class="flip-inner" id="flipInner">
-
-            <!-- Front (original content) -->
-            <div class="flip-face front">
-              <!-- Keep your original front section content here -->
-              <h1>NorthPlace Therapy</h1>
-              <h3>PSYCHOTHERAPY – COACHING – COUNSELLING</h3>
-              <p><em>Marlow & Bisham</em>, and <em>Online</em></p>
-              <p>Helping you gain clarity, confidence, and control.</p>
-              <button class="btn" id="contact-me-btn-hero">CONTACT ME</button>
-            </div>
-
-            <style>
-              /* Making Buttons Shimmery */
-              #contact-me-btn-hero {
+      
+        <style>
+            /* Making Buttons Shimmery */
+            #contact-me-btn-hero {
                 background: linear-gradient(135deg, var(--compass-blue), var(--slate-blue));
                 color: var(--white);
                 border: none;
@@ -63,9 +49,9 @@
                 margin-top: 0.5rem;
                 position: relative;
                 overflow: hidden;
-              }
-
-              #contact-me-btn-hero::before {
+            }
+            
+            #contact-me-btn-hero::before {
                 content: '';
                 position: absolute;
                 top: 0;
@@ -74,20 +60,18 @@
                 height: 100%;
                 background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
                 transition: left 0.5s ease;
-              }
-
-              #contact-me-btn-hero:hover::before {
+            }
+            
+            #contact-me-btn-hero:hover::before {
                 left: 100%;
-              }
-
-              #contact-me-btn-hero:hover {
+            }
+            
+            #contact-me-btn-hero:hover {
                 transform: translateY(-2px);
                 box-shadow: 0 6px 20px rgba(var(--rgb-accent-primary), 0.3);
-              }
-            </style>
-          </div>
-        </section>
-    </center>
+            }
+        </style>
+    </header><br><br><br>
 
 
     <div class="services-highlight" style="text-align:center; padding:2rem 1rem;"><h2>PSYCHOTHERAPY‑COACHING‑COUNSELLING</h2></div>
